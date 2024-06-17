@@ -1,0 +1,20 @@
+{% extends "informationapp/base.html" %}
+
+{% block title %}
+    Info list
+{% endblock  %}
+
+{% block body %}
+<h1>Перечень станций</h1>
+<div>
+    {% if stations.all %}
+    {% for station in stations.all %}
+        <p>Станция: {{station.name}}</p>
+        <p>Информация о станции: {{station.temperature_info}}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h3>Станции не загруженны</h3>
+    {% endif %}
+    <a href="{% url 'informationapp:info-create' %}">Create a new station</a>
+{% endblock  %}
